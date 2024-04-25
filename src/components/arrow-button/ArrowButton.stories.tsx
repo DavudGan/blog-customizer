@@ -10,10 +10,11 @@ export default meta;
 type Story = StoryObj<typeof ArrowButton>;
 
 export const ArrowButtonStory: Story = {
+
 	render: () => {
 		return (
 			<>
-				<ArrowButton />
+				<ArrowButton isFormOpen={true} toggleForm={()=>'d'} />
 			</>
 		);
 	},
