@@ -37,7 +37,7 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 	} = props;
 
 	const [isFormOpen, setIsFormOpen] = useState(false);
-	const formRef = useRef<HTMLDivElement>(null);
+	const divRef = useRef<HTMLDivElement>(null);
 
 	const [formState, setFormState] = useState(defaultArticleState);
 
@@ -71,7 +71,7 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 	useOutsideClickClose({
 		isOpen: isFormOpen,
 		onChange: setIsFormOpen,
-		rootRef: formRef,
+		rootRef: divRef,
 	});
 
 	const toggleForm = () => {
@@ -83,12 +83,13 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 	return (
 		<>
 			<ArrowButton isFormOpen={isFormOpen} toggleForm={toggleForm} />
+			<div ref={divRef}>
 			<aside
 				className={clsx(styles.container, {
 					['']: isFormOpen === false,
 					[styles.container_open]: isFormOpen === true,
 				})}>
-				<div ref={formRef}>
+
 					<form
 						className={styles.form}
 						onSubmit={(event) => {
@@ -96,13 +97,13 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 							updatePageState(formState);
 						}}>
 						<Text
-
 							size={31}
 							weight={800}
 							fontStyle='normal'
 							uppercase={true}
-							family='open-sans'
-						>Задайте параметры</Text>
+							family='open-sans'>
+							Задайте параметры
+						</Text>
 						<Select
 							selected={formState.fontFamilyOption}
 							onChange={(selectedOption) => {
@@ -150,8 +151,9 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 							<Button title='Применить' type='submit' />
 						</div>
 					</form>
-				</div>
+
 			</aside>
+			</div>
 		</>
 	);
 };
