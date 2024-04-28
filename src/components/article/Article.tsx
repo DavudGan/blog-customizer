@@ -7,15 +7,18 @@ import { Text } from 'components/text';
 import styles from './Article.module.scss';
 
 export const Article = () => {
-
-
 	return (
-		<article className={clsx(styles.article)} >
+		<article className={clsx(styles.article)}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 				Портрет Западной Швейцарии
 			</Text>
 			<div className={styles.titleDescription}>
-				<Text size={22} weight={800} uppercase={true} align='center' dynamicLite>
+				<Text
+					size={22}
+					weight={800}
+					uppercase={true}
+					align='center'
+					dynamicLite>
 					Примитивист Фиштр расписывает новый бюджетный авиалайнер
 				</Text>
 			</div>

@@ -31,7 +31,7 @@ export const Option = (props: OptionProps) => {
 		value,
 		onClick,
 	});
-
+	console.log(title);
 	return (
 		<li
 			className={clsx(styles.option, styles[optionClassName || ''])}
