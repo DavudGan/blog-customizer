@@ -27,15 +27,13 @@ type ArticleParams = {
 	setContentWidth: (fontColor: OptionType) => void;
 };
 
-export const ArticleParamsForm = (props: ArticleParams) => {
-	const {
-		setFontFamily,
-		setFontSize,
-		setFontColors,
-		setBackgroundColor,
-		setContentWidth,
-	} = props;
-
+export const ArticleParamsForm = ({
+	setFontFamily,
+	setFontSize,
+	setFontColors,
+	setBackgroundColor,
+	setContentWidth,
+}: ArticleParams) => {
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const divRef = useRef<HTMLDivElement>(null);
 
@@ -84,12 +82,10 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 		<>
 			<ArrowButton isFormOpen={isFormOpen} toggleForm={toggleForm} />
 			<div ref={divRef}>
-			<aside
-				className={clsx(styles.container, {
-					['']: isFormOpen === false,
-					[styles.container_open]: isFormOpen === true,
-				})}>
-
+				<aside
+					className={clsx(styles.container, {
+						[styles.container_open]: isFormOpen === true,
+					})}>
 					<form
 						className={styles.form}
 						onSubmit={(event) => {
@@ -151,8 +147,7 @@ export const ArticleParamsForm = (props: ArticleParams) => {
 							<Button title='Применить' type='submit' />
 						</div>
 					</form>
-
-			</aside>
+				</aside>
 			</div>
 		</>
 	);
